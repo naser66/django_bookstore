@@ -11,7 +11,8 @@
         <h5>قیمت: {{ book.price }}</h5>
         <br>
         <br>
-        <a href="{% url 'bood_edit' book.id %}"><button class="btn btn-primary mt-3" type="button">Edit</button></a>
+        <a href="{% url 'book_edit' book.id %}"><button class="btn btn-primary mt-3" type="button">Edit</button></a>
+        <a href="{% url 'book_delete' book.id %}"><button class="btn btn-danger mt-3" type="button">Delete</button></a>
         <hr>
         <br>
         <h4>Back to <a href="{% url 'book_list' %}">Books List</a> </h4>
