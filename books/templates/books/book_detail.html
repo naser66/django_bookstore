@@ -6,7 +6,7 @@
 
         <h1>{{ book.title }}</h1>
         <br>
-        <p> {{ book.description }}</p>
+        <p> {{ book.description|linebreaks }}</p>
         <h4>نویسنده : {{ book.author }}</h4>
         <h5>قیمت: {{ book.price }}</h5>
         <br>

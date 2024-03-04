@@ -6,7 +6,7 @@
     {% for book in books %}
         <h1><a href="{{book.get_absolute_url}}">{{ book.title }}</a> </h1>
         <br>
-
+        <p> {{ book.description|truncatewords }}</p>
         <h4>نویسنده : {{ book.author }}</h4>
         <h5>قیمت: {{ book.price }}</h5>
         <hr>
