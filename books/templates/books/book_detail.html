@@ -4,11 +4,11 @@
 
 {% block content %}
 
-        <h1>{{ book.title }}</h1>
+        <h1>{{ book.title|capfirst }}</h1>
         <br>
         <p> {{ book.description|linebreaks }}</p>
-        <h4>نویسنده : {{ book.author }}</h4>
-        <h5>قیمت: {{ book.price }}</h5>
+        <h4>Author: {{ book.author }}</h4>
+        <h5>Price : {{ book.price }}$</h5>
         <br>
         <br>
         <a href="{% url 'book_edit' book.id %}"><button class="btn btn-primary mt-3" type="button">Edit</button></a>
