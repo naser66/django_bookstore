@@ -1,6 +1,7 @@
 from django.views import generic
 
 from .models import Book
+from .forms import NewBookForm
 
 
 class BookListView(generic.ListView):
@@ -14,3 +15,16 @@ class BookDetailView(generic.DeleteView):
     template_name = 'books/book_detail.html'
 
 
+class BookCreateView(generic.CreateView):
+    model = Book
+    fields = ['title', 'author', 'description', 'price', ]
+    template_name = 'books/create_book.html'
+
+    # You can use form method if you want
+    # form_class = NewBookForm
+
+
+class BookUpdateView(generic.UpdateView):
+    model = Book
+    fields = ['title', 'author', 'description', 'price', ]
+    template_name = 'books/book_update.html'
