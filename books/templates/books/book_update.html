@@ -4,14 +4,14 @@
 {% block title %}Edit Book{% endblock %}
 
 {% block content %}
-    <form method="post">
+    <form action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-
-    <button class="btn btn-success mt-3" type="submit">send</button>
+        <input class="btn btn-success mt-3" type="submit" value="Save">
+    </form>
     <br>
     <a href="{% url 'book_list' %}">Back</a>
 
-    </form>
+
 
 {% endblock %}
