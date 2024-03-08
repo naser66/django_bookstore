@@ -3,16 +3,30 @@
 {% block title %}Books List{% endblock %}
 
 {% block content %}
-    {% for book in books %}
-        <h1><a href="{{book.get_absolute_url}}">{{ book.title|capfirst }}</a> </h1>
-        <br>
-        <p> {{ book.description|truncatewords }}</p>
-        <h4>Author: {{ book.author }}</h4>
-        <h5>Price: {{ book.price }}</h5>
-        <hr>
+    <div class="container mt-4">
+        <div class="row flex-row-reverse justify-content-md-center">
+            {% for book in books %}
+                <div class="card m-2" style="max-width: 45%">
+                    <div class="row g-0 h-100" dir="rtl">
+                        <div class="col-md-4">
+                            <img src="https://img.ketabrah.ir/img/l/3976863003288339.jpg"
+                                 class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8 h-100">
+                            <div class="d-flex flex-column justify-content-between h-100">
+                                <div class="card-body">
+                                    <h3 class="card-title"><strong><a href="{{ book.get_absolute_url }}">{{ book.title|capfirst }}</a></strong></h3>
+                                    <p class="card-text pt-3">{{ book.description|truncatewords:30 }}</p>
+                                    <p class="text-muted">نویسنده: {{ book.author }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
-    {% endfor %}
-    <h4><a href="{% url 'create_book' %}">Add Book</a> </h4>
 
 {% endblock %}
