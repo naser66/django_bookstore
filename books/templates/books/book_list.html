@@ -4,19 +4,21 @@
 
 {% block content %}
     <div class="container mt-4">
-        <div class="row flex-row-reverse justify-content-md-center">
+        <div class="row flex-row-reverse justify-content-md-center ">
             {% for book in books %}
-                <div class="card m-2" style="max-width: 45%">
+                <div class="card m-2 shadow" style="max-width: 45% ">
                     <div class="row g-0 h-100" dir="rtl">
                         <div class="col-md-4">
                             {% if book.cover %}
-                                <img src="{{ book.cover.url}}" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ book.cover.url }}" class="img-fluid rounded-start" alt="...">
                             {% endif %}
                         </div>
                         <div class="col-md-8 h-100">
                             <div class="d-flex flex-column justify-content-between h-100">
                                 <div class="card-body">
-                                    <h3 class="card-title"><strong><a class="nav-link" href="{{ book.get_absolute_url }}">{{ book.title|capfirst }}</a></strong></h3>
+                                    <h3 class="card-title"><strong><a class="nav-link"
+                                                                      href="{{ book.get_absolute_url }}">{{ book.title|capfirst }}</a></strong>
+                                    </h3>
                                     <p class="card-text pt-3">{{ book.description|truncatewords:30 }}</p>
                                     <p class="text-muted">نویسنده: {{ book.author }}</p>
                                 </div>
@@ -28,6 +30,34 @@
         </div>
     </div>
 
+    <nav aria-label="...">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}" tabindex="-1">Previous</a>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+            {% endif %}
+            <li class="page-item active">
+                <a class="page-link" href="#">{{ page_obj.number }} <span class="sr-only"></span></a>
+            </li>
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link"
+                                         href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Next</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
 
 
 {% endblock %}
