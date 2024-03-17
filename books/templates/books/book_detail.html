@@ -21,6 +21,21 @@
                             <h5 class="small my-1"><span class="text-muted">نویسنده: </span>{{ book.author }}</h5>
                             <h5 class="small my-1"><span class="text-muted">کاربر: </span>{{ book.user }}</h5>
 
+                                    {% if book.user == user %}
+                                        <button type="submit" class="btn btn-primary me-2 ">
+                                            <a class="link-light text-decoration-none"
+                                               href="{% url 'book_edit' book.id %}">ویرایش</a>
+                                        </button>
+                                        <br>
+                                        <button type="submit" class="btn btn-danger me-2 mt-2 ">
+                                            <a class="link-light text-decoration-none "
+                                               href="{% url 'book_delete' book.id %}">حذف
+                                                پست</a>
+                                        </button>
+                                    {% endif %}
+                                </div>
+
+
 
                         </div>
                         <div class="col-xs-12 col-md-3 d-flex flex-column">
@@ -32,20 +47,7 @@
                 </div>
 
                 <div class="d-flex justify-content-center">
-                    <div class="my-3 p-5 w-sm-75 w-100">{{ book.description|linebreaks }}
-
-
-                        {% if user.is_authenticated %}
-                            <button type="submit" class="btn btn-primary me-2 ">
-                                <a class="link-light text-decoration-none"
-                                   href="{% url 'book_edit' book.id %}">ویرایش</a>
-                            </button>
-                            <button type="submit" class="btn btn-danger me-2 ">
-                                <a class="link-light text-decoration-none " href="{% url 'book_delete' book.id %}">حذف
-                                    پست</a>
-                            </button>
-                        {% endif %}
-                    </div>
+                    <div class="my-3 p-5 w-sm-75 w-100">{{ book.description|linebreaks }}</div>
                 </div>
 
                 <div class="d-flex justify-content-center">
