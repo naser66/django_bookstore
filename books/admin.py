@@ -1,12 +1,15 @@
 from django.contrib import admin
 
 from .models import Book, Comment
-# Register your models here.
+
+
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'user', 'author', )
 
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('user', 'book', 'text', 'datetime_create', )
 
 
-admin.site.register(Book)
+admin.site.register(Book, BookAdmin)
 admin.site.register(Comment, CommentAdmin)
