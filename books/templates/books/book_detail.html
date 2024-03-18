@@ -57,9 +57,9 @@
                             <div class="border-bottom mb-3">
                                 <h5 class="mb-3">{{ comment.user|capfirst }} :</h5>
                                 {% if comment.recommend %}
-                                    <p>این کتاب را توصیه می کنم</p>
+                                    <p style="color: green">این کتاب را توصیه می کنم</p>
                                 {% else %}
-                                    <P>این کتاب را توصیه نمی کنم</P>
+                                    <P style="color: red">این کتاب را توصیه نمی کنم</P>
                                 {% endif %}
                                 <p>{{ comment.text|linebreaks }}</p>
                             </div>
