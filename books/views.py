@@ -1,5 +1,3 @@
-from abc import ABC
-
 from django.views import generic
 from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, render, redirect
@@ -22,7 +20,7 @@ class BookListView(generic.ListView):
 # class BookDetailView(generic.DeleteView):
 #     model = Book
 #     template_name = 'books/book_detail.html'
-@login_required
+
 def book_detail_view(request, pk):
     # get_book_object
     book = get_object_or_404(Book, pk=pk)
@@ -52,11 +50,12 @@ def book_detail_view(request, pk):
 @login_required()
 def book_create_view(request):
     if request.method == 'POST':
-        book_form = NewBookForm(request.POST)
+        book_form = NewBookForm(request.POST, request.FILES)
         if book_form.is_valid():
             new_book = book_form.save(commit=False)
             new_book.user = request.user
             new_book.save()
+            book_form = NewBookForm()
             return redirect('book_list')
     else:
         book_form = NewBookForm()
